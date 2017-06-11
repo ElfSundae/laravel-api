@@ -16,7 +16,7 @@
         "illuminate/support": "5.*"
     },
     "require-dev": {
-        "mockery/mockery": "~0.9",
+        "mockery/mockery": "~0.9.4",
         "phpunit/phpunit": "~5.7"
     },
     "autoload": {
@@ -24,7 +24,7 @@
             "ElfSundae\\Laravel\\Api\\": "src"
         },
         "files": [
-            "src/helpers.php"
+            "src/Support/helpers.php"
         ]
     },
     "autoload-dev": {
