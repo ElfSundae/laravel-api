@@ -1,0 +1,37 @@
+{
+    "name": "elfsundae/laravel-api",
+    "description": "",
+    "homepage": "https://github.com/ElfSundae/laravel-api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elf Sundae",
+            "email": "elf.sundae@gmail.com",
+            "homepage": "https://github.com/ElfSundae"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/support": "5.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "ElfSundae\\Laravel\\Api\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ElfSundae\\Laravel\\Api\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
