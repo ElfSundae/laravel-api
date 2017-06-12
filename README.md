@@ -17,6 +17,14 @@ You can install this package via the [Composer](https://getcomposer.org) manager
 $ composer require elfsundae/laravel-api
 ```
 
+Then register the service provider by adding the following to the `providers` array in `config/app.php`:
+
+```php
+ElfSundae\Laravel\Api\ApiServiceProvider::class,
+```
+
+## Usage
+
 ## Testing
 
 ```sh
@@ -26,4 +34,3 @@ $ composer test
 ## License
 
 This package is open-sourced software licensed under the [MIT License](LICENSE.md).
-
