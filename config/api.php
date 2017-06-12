@@ -64,6 +64,6 @@ return [
     |
     */
 
-    'default_client' = env('API_DEFAULT_CLIENT'),
+    'default_client' => env('API_DEFAULT_CLIENT'),
 
 ];
