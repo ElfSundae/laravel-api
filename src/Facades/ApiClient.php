@@ -5,7 +5,7 @@ namespace ElfSundae\Laravel\Api\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \ElfSundae\Laravel\Api\ClientManager
+ * @see \ElfSundae\Laravel\Api\Client
  */
 class ApiClient extends Facade
 {
