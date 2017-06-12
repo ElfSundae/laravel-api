@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ElfSundae\\Laravel\\Api\\": "src"
+            "ElfSundae\\Laravel\\Api\\": "src/"
         },
         "files": [
             "src/Support/helpers.php"
@@ -30,6 +30,16 @@
     "autoload-dev": {
         "psr-4": {
             "ElfSundae\\Laravel\\Api\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "ElfSundae\\Laravel\\Api\\ApiServiceProvider"
+            ]
         }
     },
     "scripts": {
