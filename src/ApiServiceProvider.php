@@ -77,7 +77,7 @@ class ApiServiceProvider extends ServiceProvider
     protected function registerForConsole()
     {
         $this->publishes([
-            __DIR__.'/../config/api.php' => config_path('api.php')
+            __DIR__.'/../config/api.php' => config_path('api.php'),
         ], 'laravel-api');
 
         $this->app->register(ConsoleServiceProvider::class);
