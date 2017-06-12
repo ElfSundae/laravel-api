@@ -2,7 +2,7 @@
 
 namespace ElfSundae\Laravel\Api\Test;
 
-class ExampleTest extends \PHPUnit\Framework\TestCase
+class ExampleTest extends TestCase
 {
     public function testExample()
     {
