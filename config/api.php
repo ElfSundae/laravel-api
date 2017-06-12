@@ -52,4 +52,18 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Default Client
+    |--------------------------------------------------------------------------
+    |
+    | The app key for the default api client.
+    | By default, it will be the first app key in the clients array.
+    |
+    | See `Api\ClientManager::defaultAppKey()`.
+    |
+    */
+
+    'default_client' = env('API_DEFAULT_CLIENT'),
+
 ];
