@@ -49,11 +49,12 @@ class ApiServiceProvider extends ServiceProvider
         $this->app->singleton('api.client', function ($app) {
             $config = $app->make('config');
 
-            return new Client(
-                    $app->make('encrypter'),
-                    $config->get('api.clients', [])
-                )
-                ->setDefaultAppKey($config->get('api.default_client'));
+            $client = new Client(
+                $app->make('encrypter'),
+                $config->get('api.clients', [])
+            );
+
+            return $client->setDefaultAppKey($config->get('api.default_client'));
         });
 
         $this->app->alias('api.client', Client::class);
