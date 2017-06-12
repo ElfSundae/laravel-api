@@ -1,13 +1,17 @@
 {
     "name": "elfsundae/laravel-api",
-    "description": "",
+    "type": "library",
     "homepage": "https://github.com/ElfSundae/laravel-api",
     "license": "MIT",
+    "description": "Laravel Api",
+    "keywords": [
+        "laravel-api"
+    ],
     "authors": [
         {
             "name": "Elf Sundae",
             "email": "elf.sundae@gmail.com",
-            "homepage": "https://github.com/ElfSundae"
+            "homepage": "https://0x123.com"
         }
     ],
     "require": {
@@ -32,6 +36,9 @@
             "ElfSundae\\Laravel\\Api\\Test\\": "tests"
         }
     },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
@@ -41,9 +48,6 @@
                 "ElfSundae\\Laravel\\Api\\ApiServiceProvider"
             ]
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
     },
     "config": {
         "sort-packages": true
