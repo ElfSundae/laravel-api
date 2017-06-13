@@ -15,6 +15,13 @@ class VerifyApiToken
     protected $token;
 
     /**
+     * The URIs that should be excluded from token verification.
+     *
+     * @var array
+     */
+    protected $except = [];
+
+    /**
      * Create the middleware.
      *
      * @param  \ElfSundae\Laravel\Api\Token  $token
@@ -33,13 +40,34 @@ class VerifyApiToken
      */
     public function handle($request, Closure $next)
     {
-        if ($this->verifyToken($request)) {
+        if ($this->inExceptArray($request) || $this->verifyToken($request)) {
             $request->attributes->set('current_app_key', $this->getKey($request));
 
             return $next($request);
         }
 
         return response('Forbidden Request', 403);
+    }
+
+    /**
+     * Determine if the request has a URI that should be passed through verification.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function inExceptArray($request)
+    {
+        foreach ($this->except as $except) {
+            if ($except !== '/') {
+                $except = trim($except, '/');
+            }
+
+            if ($request->is($except)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
