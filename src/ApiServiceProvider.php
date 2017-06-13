@@ -21,6 +21,8 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/api.php', 'api');
+
         $this->registerClient();
 
         $this->registerToken();
