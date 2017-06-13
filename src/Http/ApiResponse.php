@@ -15,6 +15,13 @@ class ApiResponse extends JsonResponse
     protected $code;
 
     /**
+     * The keys which value should be clean.
+     *
+     * @var array|null
+     */
+    protected $cleanKeys;
+
+    /**
      * Create an ApiResponse instance.
      *
      * @param  mixed  $data
@@ -103,6 +110,10 @@ class ApiResponse extends JsonResponse
             $data[static::codeKey()] = $this->getCode();
         }
 
+        if (! is_null($this->cleanKeys)) {
+            $data = $this->cleanArray($data, $this->cleanKeys);
+        }
+
         return parent::setData($data);
     }
 
@@ -122,6 +133,26 @@ class ApiResponse extends JsonResponse
     }
 
     /**
+     * Clean the given array.
+     *
+     * @param  array  $array
+     * @param  array|null  $keys
+     * @return array
+     */
+    protected function cleanArray($array, $keys = null)
+    {
+        $keys = $keys ?: array_keys($array);
+
+        foreach ($keys as $key) {
+            if (is_array($value = array_get($array, $key))) {
+                array_set($array, $key, array_filter($value));
+            }
+        }
+
+        return $array;
+    }
+
+    /**
      * Merge new data into the current data.
      *
      * @param  array  ...$data
@@ -130,16 +161,6 @@ class ApiResponse extends JsonResponse
     public function mergeData(array ...$data)
     {
         return $this->setData(array_replace($this->getData(true), ...$data));
-    }
-
-    /**
-     * Remove empty elements from the current data.
-     *
-     * @return $this
-     */
-    public function removeEmpty()
-    {
-        return $this->setData(array_filter($this->getData(true)));
     }
 
     /**
@@ -206,6 +227,43 @@ class ApiResponse extends JsonResponse
     public function message($message)
     {
         return $this->setMessage($message);
+    }
+
+    /**
+     * Get the keys which value should be clean.
+     *
+     * @return array|null
+     */
+    public function getCleanKeys()
+    {
+        return $this->cleanKeys;
+    }
+
+    /**
+     * Set the keys which value should be clean, then clean data.
+     * The passed $keys can be "dot" notation.
+     *
+     * $keys example:
+     *
+     * null             -> do not clean anything
+     * []               -> clean values associated with all root keys
+     * 'foo', 'foo.bar' -> clean values associated with 'foo' and 'foo'>'bar'
+     * ['a.b.c', 'd']
+     *
+     * @param  string|null|string[]  $keys
+     * @return $this
+     */
+    public function clean($keys = [])
+    {
+        if (is_null($keys)) {
+            $this->cleanKeys = null;
+
+            return $this;
+        }
+
+        $this->cleanKeys = is_array($keys) ? $keys : func_get_args();
+
+        return $this->setData($this->getData(true));
     }
 
     /**
