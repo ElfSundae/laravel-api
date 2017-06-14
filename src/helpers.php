@@ -6,11 +6,15 @@ if (! function_exists('api')) {
     /**
      * Create a new API response.
      *
+     * @param  mixed  $data
+     * @param  int|null  $code
+     * @param  array  $headers
+     * @param  int  $options
      * @return \ElfSundae\Laravel\Api\Http\ApiResponse
      */
-    function api(...$args)
+    function api($data = null, $code = null, $headers = [], $options = 0)
     {
-        return new ApiResponse(...$args);
+        return new ApiResponse($data, $code, $headers, $options);
     }
 }
 
