@@ -2,7 +2,7 @@
     "name": "elfsundae/laravel-api",
     "type": "library",
     "description": "Laravel Api",
-    "keywords": ["laravel-api"],
+    "keywords": ["laravel","api"],
     "homepage": "https://github.com/ElfSundae/laravel-api",
     "license": "MIT",
     "authors": [
