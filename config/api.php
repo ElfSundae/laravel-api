@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'token_duration' => env('API_TOKEN_DURATION', 180),
+    'token_duration' => env('API_TOKEN_DURATION', 150),
 
     /*
     |--------------------------------------------------------------------------
