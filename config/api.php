@@ -36,7 +36,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | All api clients that can make requests to this app's api.
-    | The first one is this app itself, see `Api\ClientManager::defaultAppKey()`.
+    | The first one is this app itself, see `Api\Client::defaultAppKey()`.
     |
     | 'app-key' => [
     |      'name' => 'app-name',
@@ -60,7 +60,7 @@ return [
     | The app key for the default api client.
     | By default, it will be the first app key in the clients array.
     |
-    | See `Api\ClientManager::defaultAppKey()`.
+    | See `Api\Client::defaultAppKey()`.
     |
     */
 
