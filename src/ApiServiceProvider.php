@@ -112,6 +112,6 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['api.client', 'api.token'];
+        return ['api.client', Client::class, 'api.token', Token::class];
     }
 }
