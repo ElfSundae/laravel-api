@@ -47,7 +47,9 @@ class ApiServiceProvider extends ServiceProvider
                 $config->get('api.clients', [])
             );
 
-            return $client->setDefaultAppKey($config->get('api.default_client'));
+            $client->setDefaultAppKey($config->get('api.default_client'));
+
+            return $client;
         });
 
         $this->app->alias('api.client', Client::class);
