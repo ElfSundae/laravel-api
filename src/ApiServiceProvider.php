@@ -3,7 +3,6 @@
 namespace ElfSundae\Laravel\Api;
 
 use Illuminate\Support\ServiceProvider;
-use ElfSundae\Laravel\Api\Console\ConsoleServiceProvider;
 
 class ApiServiceProvider extends ServiceProvider
 {
