@@ -82,7 +82,10 @@ class ApiServiceProvider extends ServiceProvider
             __DIR__.'/../config/api.php' => config_path('api.php'),
         ], 'laravel-api');
 
-        $this->app->register(ConsoleServiceProvider::class);
+        $this->commands([
+            Commands\GenerateClient::class,
+            Commands\GenerateToken::class,
+        ]);
     }
 
     /**
