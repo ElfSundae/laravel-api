@@ -1,5 +1,7 @@
 <?php
 
+use ElfSundae\Laravel\Api\ApiResponse;
+
 if (! function_exists('api')) {
     /**
      * Create a new API response.
