@@ -4,6 +4,7 @@ namespace ElfSundae\Laravel\Api\Middleware;
 
 use Closure;
 use ElfSundae\Laravel\Api\Token;
+use ElfSundae\Laravel\Api\Exceptions\ApiResponseException;
 
 class VerifyApiToken
 {
@@ -46,7 +47,7 @@ class VerifyApiToken
             return $next($request);
         }
 
-        return response('Forbidden Request', 403);
+        throw new ApiResponseException('Forbidden Request', 403);
     }
 
     /**
