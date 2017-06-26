@@ -3,14 +3,14 @@
 namespace ElfSundae\Laravel\Api\Exceptions;
 
 use RuntimeException;
-use ElfSundae\Laravel\Api\Http\ApiResponse;
+use ElfSundae\Laravel\Api\ApiResponse;
 
 class ApiResponseException extends RuntimeException
 {
     /**
      * The underlying response instance.
      *
-     * @var \ElfSundae\Laravel\Api\Http\ApiResponse
+     * @var \ElfSundae\Laravel\Api\ApiResponse
      */
     protected $response;
 
@@ -31,7 +31,7 @@ class ApiResponseException extends RuntimeException
     /**
      * Get the underlying response instance.
      *
-     * @return \ElfSundae\Laravel\Api\Http\ApiResponse
+     * @return \ElfSundae\Laravel\Api\ApiResponse
      */
     public function getResponse()
     {

@@ -1,7 +1,5 @@
 <?php
 
-use ElfSundae\Laravel\Api\Http\ApiResponse;
-
 if (! function_exists('api')) {
     /**
      * Create a new API response.
@@ -10,7 +8,7 @@ if (! function_exists('api')) {
      * @param  int|null  $code
      * @param  array  $headers
      * @param  int  $options
-     * @return \ElfSundae\Laravel\Api\Http\ApiResponse
+     * @return \ElfSundae\Laravel\Api\ApiResponse
      */
     function api($data = null, $code = null, $headers = [], $options = 0)
     {
@@ -22,7 +20,7 @@ if (! function_exists('current_app_key')) {
     /**
      * Get the app key of the current api client.
      *
-     * @see \ElfSundae\Laravel\Api\Http\Middleware\VerifyApiToken
+     * @see \ElfSundae\Laravel\Api\Middleware\VerifyApiToken
      *
      * @return string|null
      */

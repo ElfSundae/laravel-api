@@ -84,8 +84,8 @@ class ApiServiceProvider extends ServiceProvider
         ], 'laravel-api');
 
         $this->commands([
-            Console\Commands\GenerateClient::class,
-            Console\Commands\GenerateToken::class,
+            Console\GenerateClientCommand::class,
+            Console\GenerateTokenCommand::class,
         ]);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ElfSundae\Laravel\Api\Http\Middleware;
+namespace ElfSundae\Laravel\Api\Middleware;
 
 use Closure;
 use Illuminate\Http\JsonResponse;

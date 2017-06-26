@@ -1,6 +1,6 @@
 <?php
 
-namespace ElfSundae\Laravel\Api\Http;
+namespace ElfSundae\Laravel\Api;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Database\Eloquent\Model;

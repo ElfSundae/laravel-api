@@ -1,10 +1,10 @@
 <?php
 
-namespace ElfSundae\Laravel\Api\Console\Commands;
+namespace ElfSundae\Laravel\Api\Console;
 
 use Illuminate\Console\Command;
 
-class GenerateClient extends Command
+class GenerateClientCommand extends Command
 {
     /**
      * The name and signature of the console command.
