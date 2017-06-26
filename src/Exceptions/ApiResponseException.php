@@ -21,7 +21,6 @@ class ApiResponseException extends RuntimeException
      * @param  int  $code
      * @param  array  $headers
      * @param  int  $options
-     * @return void
      */
     public function __construct($data = null, $code = -1, $headers = [], $options = 0)
     {

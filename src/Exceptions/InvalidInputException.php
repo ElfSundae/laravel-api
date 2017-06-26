@@ -11,7 +11,6 @@ class InvalidInputException extends ApiResponseException
      * @param  int  $code
      * @param  array  $headers
      * @param  int  $options
-     * @return void
      */
     public function __construct($data = 'Invalid Input', $code = 421, $headers = [], $options = 0)
     {
