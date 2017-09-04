@@ -45,7 +45,11 @@
         "laravel": {
             "providers": [
                 "ElfSundae\\Laravel\\Api\\ApiServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "ApiClient": "ElfSundae\\Laravel\\Api\\Facades\\ApiClient",
+                "ApiToken": "ElfSundae\\Laravel\\Api\\Facades\\ApiToken"
+            }
         }
     },
     "config": {
