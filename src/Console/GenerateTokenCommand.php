@@ -3,6 +3,7 @@
 namespace ElfSundae\Laravel\Api\Console;
 
 use Illuminate\Console\Command;
+use ElfSundae\Laravel\Api\Token;
 
 class GenerateTokenCommand extends Command
 {
@@ -27,7 +28,7 @@ class GenerateTokenCommand extends Command
      */
     public function handle()
     {
-        $token = $this->laravel->make('api.token');
+        $token = $this->laravel->make(Token::class);
 
         $key = $this->argument('app key');
 

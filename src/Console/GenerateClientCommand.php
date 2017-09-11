@@ -3,6 +3,7 @@
 namespace ElfSundae\Laravel\Api\Console;
 
 use Illuminate\Console\Command;
+use ElfSundae\Laravel\Api\Client;
 
 class GenerateClientCommand extends Command
 {
@@ -27,7 +28,7 @@ class GenerateClientCommand extends Command
      */
     public function handle()
     {
-        $client = $this->laravel->make('api.client');
+        $client = $this->laravel->make(Client::class);
 
         $data = [
             'name' => $name = $this->argument('app name'),
