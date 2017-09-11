@@ -52,10 +52,13 @@ class Client
      * Set the client.
      *
      * @param  array  $clients
+     * @return $this
      */
     public function setClients(array $clients)
     {
         $this->clients = $clients;
+
+        return $this;
     }
 
     /**
@@ -72,10 +75,13 @@ class Client
      * Set the Encrypter instance.
      *
      * @param  \Illuminate\Contracts\Encryption\Encrypter  $encrypter
+     * @return $this
      */
     public function setEncrypter(Encrypter $encrypter)
     {
         $this->encrypter = $encrypter;
+
+        return $this;
     }
 
     /**
