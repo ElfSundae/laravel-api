@@ -26,7 +26,7 @@ ElfSundae\Laravel\Api\ApiServiceProvider::class,
 And publish the config file:
 
 ```sh
-$ php artisan vendor:publish --tag=api
+$ php artisan vendor:publish --tag=laravel-api
 ```
 
 ## Usage

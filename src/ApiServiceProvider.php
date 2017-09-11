@@ -78,7 +78,7 @@ class ApiServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/api.php' => base_path('config/api.php'),
-        ], 'api');
+        ], 'laravel-api');
 
         $this->commands([
             Console\GenerateClientCommand::class,
