@@ -2,7 +2,6 @@
 
 namespace ElfSundae\Laravel\Api;
 
-use ElfSundae\Laravel\Api\Client;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Encryption\Encrypter;
 
