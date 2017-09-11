@@ -2,6 +2,7 @@
 
 namespace ElfSundae\Laravel\Api;
 
+use Illuminate\Support\Arr;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Database\Eloquent\Model;
 
@@ -93,16 +94,16 @@ class ApiResponse extends JsonResponse
     public function setData($data = null)
     {
         if ($data instanceof Model) {
-            $data = [
-                snake_case(class_basename($data)) => $this->convertObjectToArray($data),
-            ];
+            $data = [snake_case(class_basename($data)) => $this->convertObjectToArray($data)];
         } elseif (is_object($data)) {
             $data = $this->convertObjectToArray($data);
         } elseif (is_null($data)) {
             $data = [];
         } elseif (is_string($data)) {
             $data = [static::messageKey() => $data];
-        } elseif (! is_array($data)) {
+        }
+
+        if (! is_array($data)) {
             $data = [static::messageKey() => json_encode($data)];
         }
 
@@ -144,8 +145,8 @@ class ApiResponse extends JsonResponse
         $keys = $keys ?: array_keys($array);
 
         foreach ($keys as $key) {
-            if (is_array($value = array_get($array, $key))) {
-                array_set($array, $key, array_filter($value));
+            if (is_array($value = Arr::get($array, $key))) {
+                Arr::set($array, $key, array_filter($value));
             }
         }
 
@@ -204,7 +205,7 @@ class ApiResponse extends JsonResponse
      */
     public function getMessage()
     {
-        return array_get($this->getData(true), static::messageKey());
+        return Arr::get($this->getData(true), static::messageKey());
     }
 
     /**
@@ -248,7 +249,7 @@ class ApiResponse extends JsonResponse
      * null             -> do not clean anything
      * []               -> clean values associated with all root keys
      * 'foo', 'foo.bar' -> clean values associated with 'foo' and 'foo'>'bar'
-     * ['a.b.c', 'd']
+     * ['foo', 'foo.bar']
      *
      * @param  string|null|string[]  $keys
      * @return $this
