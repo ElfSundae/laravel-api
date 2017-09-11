@@ -1,5 +1,10 @@
 # Release Notes
 
+## Unreleased
+
+- Add support to Laravel package auto-discovery
+- Remove register facade alias
+
 ## 1.2.0 (2017-06-26)
 
 - Change source struct
