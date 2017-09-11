@@ -2,6 +2,7 @@
 
 namespace ElfSundae\Laravel\Api;
 
+use Illuminate\Support\Arr;
 use Illuminate\Contracts\Encryption\Encrypter;
 
 class Client
@@ -91,7 +92,7 @@ class Client
      */
     public function defaultAppKey()
     {
-        return $this->defaultAppKey ?: (string) array_first(array_keys($this->clients));
+        return $this->defaultAppKey ?: Arr::first(array_keys($this->clients));
     }
 
     /**
