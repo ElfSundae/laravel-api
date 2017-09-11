@@ -2,7 +2,9 @@
 
 namespace ElfSundae\Laravel\Api;
 
+use ElfSundae\Laravel\Api\Client;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Encryption\Encrypter;
 
 class ApiServiceProvider extends ServiceProvider
 {
@@ -42,7 +44,7 @@ class ApiServiceProvider extends ServiceProvider
             $config = $app->make('config');
 
             $client = new Client(
-                $app->make('encrypter'),
+                $app->make(Encrypter::class),
                 $config->get('api.clients', [])
             );
 
@@ -64,7 +66,7 @@ class ApiServiceProvider extends ServiceProvider
     protected function registerToken()
     {
         $this->app->singleton('api.token', function ($app) {
-            return new Token($app->make('api.client'));
+            return new Token($app->make(Client::class));
         });
 
         $this->app->alias('api.token', Token::class);
