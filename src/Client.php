@@ -116,7 +116,7 @@ class Client
      */
     public function appKeyForName($appName)
     {
-        return substr(sha1((string) $appName.$this->encrypter->getKey()), 0, 16);
+        return substr(sha1($appName.$this->encrypter->getKey()), 0, 16);
     }
 
     /**
