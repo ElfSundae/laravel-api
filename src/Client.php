@@ -149,7 +149,7 @@ class Client
      */
     public function getAppNameForKey($key)
     {
-        return array_get($this->clients, $key.'.name');
+        return Arr::get($this->clients, $key.'.name');
     }
 
     /**
@@ -160,6 +160,6 @@ class Client
      */
     public function getAppSecretForKey($key)
     {
-        return array_get($this->clients, $key.'.secret');
+        return Arr::get($this->clients, $key.'.secret');
     }
 }
