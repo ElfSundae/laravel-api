@@ -4,6 +4,7 @@
 
 - Add support for Laravel package auto-discovery
 - Remove register facade alias
+- Change: throw `ElfSundae\Laravel\Api\Exceptions\InvalidApiTokenException` in `VerifyApiToken` middleware
 
 ## 1.2.0 (2017-06-26)
 

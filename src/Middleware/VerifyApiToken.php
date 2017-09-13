@@ -4,7 +4,7 @@ namespace ElfSundae\Laravel\Api\Middleware;
 
 use Closure;
 use ElfSundae\Laravel\Api\Token;
-use ElfSundae\Laravel\Api\Exceptions\ApiResponseException;
+use ElfSundae\Laravel\Api\Exceptions\InvalidApiTokenException;
 
 class VerifyApiToken
 {
@@ -38,16 +38,21 @@ class VerifyApiToken
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed
+     *
+     * @throws \ElfSundae\Laravel\Api\Exceptions\InvalidApiTokenException
      */
     public function handle($request, Closure $next)
     {
-        if ($this->inExceptArray($request) || $this->verifyToken($request)) {
-            $request->attributes->set('current_app_key', $this->getKey($request));
+        if (
+            $this->inExceptArray($request) ||
+            $this->verifyToken($request)
+        ) {
+            $this->setCurrentAppKeyForRequest($request);
 
             return $next($request);
         }
 
-        throw new ApiResponseException('Forbidden Request', 403);
+        throw new InvalidApiTokenException;
     }
 
     /**
@@ -79,46 +84,31 @@ class VerifyApiToken
      */
     protected function verifyToken($request)
     {
-        if ($time = $this->getTime($request)) {
-            $verifyTime = abs(time() - $time) < (int) config('api.token_duration');
-            $verifyToken = $this->token->verify($this->getToken($request), $this->getKey($request), $time);
+        $time = (int) ($request->input('_time') ?: $request->header('X-API-TIME'));
+        $token = $request->input('_token') ?: $request->header('X-API-TOKEN');
 
-            return $verifyTime && $verifyToken;
-        }
-
-        return false;
+        return abs(time() - $time) < (int) config('api.token_duration') &&
+            $this->token->verify($token, $this->getKeyFromRequest($request), $time);
     }
 
     /**
-     * Get the app key.
+     * Get the app key from the request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
-    protected function getKey($request)
+    protected function getKeyFromRequest($request)
     {
         return $request->input('_key') ?: $request->header('X-API-KEY');
     }
 
     /**
-     * Get the time.
+     * Set current app key for the request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return int
      */
-    protected function getTime($request)
+    protected function setCurrentAppKeyForRequest($request)
     {
-        return (int) ($request->input('_time') ?: $request->header('X-API-TIME'));
-    }
-
-    /**
-     * Get the api token.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    protected function getToken($request)
-    {
-        return $request->input('_token') ?: $request->header('X-API-TOKEN');
+        $request->attributes->set('current_app_key', $this->getKeyFromRequest($request));
     }
 }
