@@ -109,5 +109,55 @@ class Token
         if ($secret = $this->client->getAppSecretForKey($key)) {
             return $this->generateData($key, $secret, $time);
         }
+
+        return [];
+    }
+
+    /**
+     * Generate HTTP headers with a new token.
+     *
+     * @param  string  $appKey
+     * @param  string|int|null  $time
+     * @return array
+     */
+    public function generateHttpHeaders($appKey, $time = null)
+    {
+        $headers = [];
+
+        foreach ($this->generateDataForKey($appKey, $time) as $key => $value) {
+            $headers['X-API-'.strtoupper($key)] = $value;
+        }
+
+        return $headers;
+    }
+
+    /**
+     * Generate query data with a new token.
+     *
+     * @param  string  $appKey
+     * @param  string|int|null  $time
+     * @return array
+     */
+    public function generateQueryData($appKey, $time = null)
+    {
+        $query = [];
+
+        foreach ($this->generateDataForKey($appKey, $time) as $key => $value) {
+            $query['_'.$key] = $value;
+        }
+
+        return $query;
+    }
+
+    /**
+     * Generate query string with a new token.
+     *
+     * @param  string  $appKey
+     * @param  string|int|null  $time
+     * @return string
+     */
+    public function generateQueryString($appKey, $time = null)
+    {
+        return http_build_query($this->generateQueryData($appKey, $time));
     }
 }
