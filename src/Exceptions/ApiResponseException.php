@@ -28,6 +28,34 @@ class ApiResponseException extends RuntimeException
     }
 
     /**
+     * Thrown when the user input is invalid.
+     *
+     * @param  mixed  $data
+     * @param  int  $code
+     * @param  array  $headers
+     * @param  int  $options
+     * @return static
+     */
+    public static function invalidInputException($data = 'Invalid Input', $code = 421, $headers = [], $options = 0)
+    {
+        return new static($data, $code, $headers, $options);
+    }
+
+    /**
+     * Thrown when action failed.
+     *
+     * @param  mixed  $data
+     * @param  int  $code
+     * @param  array  $headers
+     * @param  int  $options
+     * @return static
+     */
+    public static function actionFailureException($data = 'Action Failure', $code = 470, $headers = [], $options = 0)
+    {
+        return new static($data, $code, $headers, $options);
+    }
+
+    /**
      * Get the underlying response instance.
      *
      * @return \ElfSundae\Laravel\Api\ApiResponse
