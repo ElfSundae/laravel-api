@@ -1,5 +1,6 @@
 <?php
 
+use ElfSundae\Laravel\Api\Helper;
 use ElfSundae\Laravel\Api\ApiResponse;
 
 if (! function_exists('api')) {
@@ -20,7 +21,7 @@ if (! function_exists('api')) {
 
 if (! function_exists('current_app_key')) {
     /**
-     * Get the app key of the current api client.
+     * Get the app key of current api client.
      *
      * @see \ElfSundae\Laravel\Api\Middleware\VerifyApiToken
      *
@@ -28,6 +29,6 @@ if (! function_exists('current_app_key')) {
      */
     function current_app_key()
     {
-        return app('request')->attributes->get('current_app_key');
+        return Helper::getCurrentAppKey(app('request'));
     }
 }

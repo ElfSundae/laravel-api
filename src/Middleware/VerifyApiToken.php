@@ -4,6 +4,7 @@ namespace ElfSundae\Laravel\Api\Middleware;
 
 use Closure;
 use ElfSundae\Laravel\Api\Token;
+use ElfSundae\Laravel\Api\Helper;
 use ElfSundae\Laravel\Api\Exceptions\InvalidApiTokenException;
 
 class VerifyApiToken
@@ -43,11 +44,8 @@ class VerifyApiToken
      */
     public function handle($request, Closure $next)
     {
-        if (
-            $this->inExceptArray($request) ||
-            $this->verifyToken($request)
-        ) {
-            $this->setCurrentAppKeyForRequest($request);
+        if ($this->inExceptArray($request) || $this->verifyToken($request)) {
+            Helper::setCurrentAppKeyForRequest($request, $this->getKeyFromRequest($request));
 
             return $next($request);
         }
@@ -100,15 +98,5 @@ class VerifyApiToken
     protected function getKeyFromRequest($request)
     {
         return $request->input('_key') ?: $request->header('X-API-KEY');
-    }
-
-    /**
-     * Set current app key for the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     */
-    protected function setCurrentAppKeyForRequest($request)
-    {
-        $request->attributes->set('current_app_key', $this->getKeyFromRequest($request));
     }
 }
