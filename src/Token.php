@@ -47,11 +47,13 @@ class Token
      * @param  string  $key
      * @param  string  $secret
      * @param  string|int  $time
-     * @return string
+     * @return string|null
      */
     public function generate($key, $secret, $time)
     {
-        return substr(md5($key.$secret.$time), 10, 20);
+        if ($key && $secret && $time) {
+            return substr(md5($key.$secret.$time), 10, 20);
+        }
     }
 
     /**
@@ -63,9 +65,7 @@ class Token
      */
     public function generateForKey($key, $time)
     {
-        if ($secret = $this->client->getAppSecretForKey($key)) {
-            return $this->generate($key, $secret, $time);
-        }
+        return $this->generate($key, $this->client->getAppSecretForKey($key), $time);
     }
 
     /**
@@ -91,11 +91,10 @@ class Token
      */
     public function generateData($key, $secret, $time = null)
     {
-        return [
-            'key' => (string) $key,
-            'time' => $time = $time ?: time(),
-            'token' => $this->generate($key, $secret, $time),
-        ];
+        $time = $time ?: time();
+        $token = $this->generate($key, $secret, $time);
+
+        return $token ? compact('key', 'time', 'token') : [];
     }
 
     /**
