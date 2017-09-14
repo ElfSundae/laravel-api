@@ -1,6 +1,6 @@
 # Release Notes
 
-## Unreleased
+## 1.3.0 (2017-09-15)
 
 - Add support for Laravel package auto-discovery
 - Remove register facade alias
