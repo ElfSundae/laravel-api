@@ -1,8 +1,8 @@
 {
     "name": "elfsundae/laravel-api",
     "type": "library",
-    "description": "Laravel Api",
-    "keywords": ["laravel","api"],
+    "description": "Laravel api client, token, and response.",
+    "keywords": ["laravel", "api", "token"],
     "homepage": "https://github.com/ElfSundae/laravel-api",
     "license": "MIT",
     "authors": [
