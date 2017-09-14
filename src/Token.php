@@ -65,7 +65,9 @@ class Token
      */
     public function generateForKey($key, $time)
     {
-        return $this->generate($key, $this->client->getAppSecretForKey($key), $time);
+        if ($secret = $this->client->getAppSecretForKey($key)) {
+            return $this->generate($key, $secret, $time);
+        }
     }
 
     /**
