@@ -6,6 +6,7 @@
 - Remove register facade alias
 - Change: throw `ElfSundae\Laravel\Api\Exceptions\InvalidApiTokenException` in `VerifyApiToken` middleware
 - Remove `ActionFailureException`, `InvalidInputException`. Use `ApiResponseException::invalidInputException()`, `ApiResponseException::actionFailureException()` instead.
+- Add methods to generate api token as HTTP headers or URL query: `Token::generateHttpHeaders`, `Token::generateQueryData`, `Token::generateQueryString`
 
 ## 1.2.0 (2017-06-26)
 
