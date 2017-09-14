@@ -36,7 +36,7 @@ class ApiResponseException extends RuntimeException
      * @param  int  $options
      * @return static
      */
-    public static function invalidInputException($data = 'Invalid Input', $code = 421, $headers = [], $options = 0)
+    public static function invalidInput($data = 'Invalid Input', $code = 421, $headers = [], $options = 0)
     {
         return new static($data, $code, $headers, $options);
     }
@@ -50,7 +50,7 @@ class ApiResponseException extends RuntimeException
      * @param  int  $options
      * @return static
      */
-    public static function actionFailureException($data = 'Action Failure', $code = 470, $headers = [], $options = 0)
+    public static function actionFailure($data = 'Action Failure', $code = 470, $headers = [], $options = 0)
     {
         return new static($data, $code, $headers, $options);
     }

@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.3.1 (2017-09-15)
+
+- Change methods name for ApiResponseException: `invalidInputException` to `invalidInput`, `actionFailureException` to `actionFailure`.
+
 ## 1.3.0 (2017-09-15)
 
 - Add support for Laravel package auto-discovery
