@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.3.2 (2017-09-27)
+
+- Add `Helper::addAcceptableJsonTypeForRequest()`
+
 ## 1.3.1 (2017-09-15)
 
 - Change methods name for ApiResponseException: `invalidInputException` to `invalidInput`, `actionFailureException` to `actionFailure`.
