@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 class Helper
 {
     /**
-     * Stores the app key of current api client.
+     * Stores the app key of the current api client.
      */
     const CURRENT_APP_KEY = 'current_app_key';
 
     /**
-     * Set current app key for the request.
+     * Set the current app key for the request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $key
@@ -26,7 +26,7 @@ class Helper
     }
 
     /**
-     * Get the app key of current api client.
+     * Get the app key of the current api client.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
