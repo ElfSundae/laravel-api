@@ -8,13 +8,6 @@ use Illuminate\Contracts\Encryption\Encrypter;
 class ApiServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * Register the service provider.
      *
      * @return void
@@ -84,15 +77,5 @@ class ApiServiceProvider extends ServiceProvider
             Console\GenerateClientCommand::class,
             Console\GenerateTokenCommand::class,
         ]);
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return string[]
-     */
-    public function provides()
-    {
-        return ['api.client', Client::class, 'api.token', Token::class];
     }
 }
