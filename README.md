@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/ElfSundae/laravel-api/master.svg?style=flat-square)](https://travis-ci.org/ElfSundae/laravel-api)
 [![StyleCI](https://styleci.io/repos/94031282/shield)](https://styleci.io/repos/94031282)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/e9f65dda-cd57-4ff8-a9c3-313c8d1c4ced.svg?style=flat-square)](https://insight.sensiolabs.com/projects/e9f65dda-cd57-4ff8-a9c3-313c8d1c4ced)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/16f19a75-3135-4de0-a3eb-9c1da8f24e64.svg?style=flat-square)](https://insight.sensiolabs.com/projects/16f19a75-3135-4de0-a3eb-9c1da8f24e64)
 [![Quality Score](https://img.shields.io/scrutinizer/g/elfsundae/laravel-api.svg?style=flat-square)](https://scrutinizer-ci.com/g/elfsundae/laravel-api)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/elfsundae/laravel-api/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/elfsundae/laravel-api/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/elfsundae/laravel-api.svg?style=flat-square)](https://packagist.org/packages/elfsundae/laravel-api)
