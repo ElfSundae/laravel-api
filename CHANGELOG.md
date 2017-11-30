@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.5.0 (2017-10-14)
+
+- Don't defer service provider since it merges config file
+
 ## 1.3.2 (2017-09-27)
 
 - Add `Helper::addAcceptableJsonTypeForRequest()`
