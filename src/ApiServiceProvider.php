@@ -3,7 +3,6 @@
 namespace ElfSundae\Laravel\Api;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Encryption\Encrypter;
 
 class ApiServiceProvider extends ServiceProvider
 {
