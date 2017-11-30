@@ -53,7 +53,7 @@ class Helper
      */
     public static function addAcceptableJsonTypeForRequest(Closure $determination = null, Closure $callback = null)
     {
-        app()->rebinding('request', function ($app, $request) use ($determination, $callback) {
+        app()->rebinding('request', function ($app, Request $request) use ($determination, $callback) {
             if (is_null($determination) || $determination($request)) {
                 $accept = $request->headers->get('Accept');
 

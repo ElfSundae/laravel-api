@@ -3,6 +3,7 @@
 namespace ElfSundae\Laravel\Api\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use ElfSundae\Laravel\Api\Token;
 use ElfSundae\Laravel\Api\Helper;
 use ElfSundae\Laravel\Api\Exceptions\InvalidApiTokenException;
@@ -59,7 +60,7 @@ class VerifyApiToken
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    protected function inExceptArray($request)
+    protected function inExceptArray(Request $request)
     {
         foreach ($this->except as $except) {
             if ($except !== '/') {
@@ -80,7 +81,7 @@ class VerifyApiToken
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    protected function verifyToken($request)
+    protected function verifyToken(Request $request)
     {
         $time = (int) ($request->input('_time') ?: $request->header('X-API-TIME'));
         $token = $request->input('_token') ?: $request->header('X-API-TOKEN');
@@ -95,7 +96,7 @@ class VerifyApiToken
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
-    protected function getKeyFromRequest($request)
+    protected function getKeyFromRequest(Request $request)
     {
         return $request->input('_key') ?: $request->header('X-API-KEY');
     }
