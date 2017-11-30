@@ -16,12 +16,14 @@ class Helper
     /**
      * Set the current app key for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  string  $key
+     * @param  \Illuminate\Http\Request|null  $request
      * @return \Illuminate\Http\Request
      */
-    public static function setCurrentAppKeyForRequest(Request $request, $key)
+    public static function setCurrentAppKeyForRequest($key, Request $request = null)
     {
+        $request = $request ?: app('request');
+
         $request->attributes->set(static::CURRENT_APP_KEY, $key);
 
         return $request;
@@ -30,11 +32,13 @@ class Helper
     /**
      * Get the app key of the current api client.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request|null  $request
      * @return string|null
      */
-    public static function getCurrentAppKey(Request $request)
+    public static function getCurrentAppKey(Request $request = null)
     {
+        $request = $request ?: app('request');
+
         return $request->attributes->get(static::CURRENT_APP_KEY);
     }
 

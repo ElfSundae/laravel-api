@@ -45,9 +45,9 @@ class VerifyApiToken
     public function handle($request, Closure $next)
     {
         if ($this->inExceptArray($request) || $this->verifyToken($request)) {
-            Helper::setCurrentAppKeyForRequest($request, $this->getKeyFromRequest($request));
-
-            return $next($request);
+            return $next(
+                Helper::setCurrentAppKeyForRequest($this->getKeyFromRequest($request), $request)
+            );
         }
 
         throw new InvalidApiTokenException;

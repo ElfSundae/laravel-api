@@ -29,6 +29,6 @@ if (! function_exists('current_app_key')) {
      */
     function current_app_key()
     {
-        return Helper::getCurrentAppKey(app('request'));
+        return Helper::getCurrentAppKey();
     }
 }
