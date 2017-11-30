@@ -1,5 +1,10 @@
 # Release Notes
 
+## 1.6.0 (2017-11-30)
+
+- Optional `$request` for getting/setting current app key
+- Remove `$app` parameter for `Helper::addAcceptableJsonTypeForRequest`
+
 ## 1.5.0 (2017-10-14)
 
 - Don't defer service provider since it merges config file
