@@ -33,14 +33,12 @@ class ApiServiceProvider extends ServiceProvider
     protected function registerClient()
     {
         $this->app->singleton('api.client', function ($app) {
-            $config = $app->make('config');
-
             $client = new Client(
-                $app->make(Encrypter::class),
-                $config->get('api.clients', [])
+                $app['encrypter'],
+                $app['config']->get('api.clients', [])
             );
 
-            $client->setDefaultAppKey($config->get('api.default_client'));
+            $client->setDefaultAppKey($app['config']->get('api.default_client'));
 
             return $client;
         });
@@ -56,7 +54,7 @@ class ApiServiceProvider extends ServiceProvider
     protected function registerToken()
     {
         $this->app->singleton('api.token', function ($app) {
-            return new Token($app->make(Client::class));
+            return new Token($app['api.client']);
         });
 
         $this->app->alias('api.token', Token::class);
