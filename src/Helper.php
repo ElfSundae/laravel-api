@@ -2,9 +2,9 @@
 
 namespace ElfSundae\Laravel\Api;
 
+use Closure;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Container\Container;
 
 class Helper
 {
@@ -47,15 +47,14 @@ class Helper
      *
      * @see https://laravel-china.org/topics/3430
      *
-     * @param  \Illuminate\Container\Container  $app
-     * @param  callable  $determination  ($request) :bool
-     * @param  callable  $callback  ($request)
+     * @param  \Closure  $determination
+     * @param  \Closure  $callback
      * @return mixed
      */
-    public static function addAcceptableJsonTypeForRequest(Container $app, $determination = null, $callback = null)
+    public static function addAcceptableJsonTypeForRequest(Closure $determination = null, Closure $callback = null)
     {
-        $app->rebinding('request', function ($app, $request) use ($determination, $callback) {
-            if (is_null($determination) || call_user_func($determination, $request)) {
+        app()->rebinding('request', function ($app, $request) use ($determination, $callback) {
+            if (is_null($determination) || $determination($request)) {
                 $accept = $request->headers->get('Accept');
 
                 if (! Str::contains($accept, ['/json', '+json'])) {
@@ -66,7 +65,7 @@ class Helper
                     $_SERVER['HTTP_ACCEPT'] = $accept;
 
                     if ($callback) {
-                        call_user_func($callback, $request);
+                        $callback($request);
                     }
                 }
             }
