@@ -29,8 +29,6 @@ And publish the config file:
 $ php artisan vendor:publish --tag=laravel-api
 ```
 
-## Usage
-
 ## Testing
 
 ```sh
