@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.7.0 (2017-12-08)
+
+- Auto call `$app->configure('api')` for Lumen application
+
 ## 1.6.0 (2017-11-30)
 
 - Optional `$request` for getting/setting current app key
