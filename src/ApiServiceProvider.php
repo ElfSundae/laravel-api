@@ -3,6 +3,7 @@
 namespace ElfSundae\Laravel\Api;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Lumen\Application as LumenApplication;
 
 class ApiServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,10 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if ($this->app instanceof LumenApplication) {
+            $this->app->configure('api'); // @codeCoverageIgnore
+        }
+
         $this->mergeConfigFrom(__DIR__.'/../config/api.php', 'api');
 
         $this->registerClient();
