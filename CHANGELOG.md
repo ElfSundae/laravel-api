@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.8.0 (2018-02-04)
+
+- Support Laravel 5.6
+
 ## 1.7.0 (2017-12-08)
 
 - Auto call `$app->configure('api')` for Lumen application
