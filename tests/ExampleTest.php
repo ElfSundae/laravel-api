@@ -7,10 +7,10 @@ use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
 {
-    protected function tearDown()
-    {
-        m::close();
-    }
+    // protected function tearDown()
+    // {
+    //     m::close();
+    // }
 
     public function testExample()
     {
